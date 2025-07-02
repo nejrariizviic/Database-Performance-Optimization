@@ -1,4 +1,3 @@
-
 namespace api.DTO;
 
 public class PopularCommentatorsDTO

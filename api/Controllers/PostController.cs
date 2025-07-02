@@ -17,6 +17,33 @@ namespace api.Controllers
             this.postRepository = postRepository;
         }
 
+        [HttpGet("popular-posts-by-year")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetPopularCommentatorsAsync()
+        {
+            var popularUsers = await postRepository.GetMostPopularPostsByYear();
+            return Ok(popularUsers);
+        }
+
+        [HttpPut("update-posts-based-on-score")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdatePostsScoreBasedOnCommentsScore()
+        {
+            try
+            {
+                await postRepository.UpdatePostsScoreBasedOnComments();
+                return Ok("Posts successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Please try again later, unexpected error occured. " + ex.Message);
+            }
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
