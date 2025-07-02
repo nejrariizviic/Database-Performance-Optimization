@@ -117,6 +117,7 @@ public class PostRepository : IPostRepository
             .Select(p => new
             {
                 p.Id,
+                p.Title,
                 p.ViewCount,
                 Year = p.CreationDate.Year,
                 p.CreationDate,
@@ -132,6 +133,7 @@ public class PostRepository : IPostRepository
         .Select(p => new MostViewedPostsDTO
         {
             Id = p.Id,
+            Title = p.Title,
             ViewCount = p.ViewCount,
             CreationDate = p.CreationDate,
             LastEditDate = p.LastEditDate,

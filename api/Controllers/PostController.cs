@@ -21,7 +21,7 @@ namespace api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetPopularCommentatorsAsync()
+        public async Task<IActionResult> GetPopularPostsAsync()
         {
             var popularUsers = await postRepository.GetMostPopularPostsByYear();
             return Ok(popularUsers);
