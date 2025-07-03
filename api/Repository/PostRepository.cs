@@ -133,7 +133,7 @@ public class PostRepository : IPostRepository
         .Select(p => new MostViewedPostsDTO
         {
             Id = p.Id,
-            Title = p.Title,
+            Title = p.Title ?? "",
             ViewCount = p.ViewCount,
             CreationDate = p.CreationDate,
             LastEditDate = p.LastEditDate,
