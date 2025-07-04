@@ -41,10 +41,7 @@ namespace api.Controllers
             }
             catch (Exception ex)
             {
-                var baseException = ex.GetBaseException();
-                var errorMessage = baseException.Message;
-                // Možeš errorMessage logovati ili vratiti kao odgovor da vidiš detalje greške
-                return StatusCode(500, $"Unexpected error occurred: {errorMessage}");
+                throw new Exception("Please try again later, unexpected error occured. " + ex.Message);
             }
         }
 
